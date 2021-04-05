@@ -26,6 +26,7 @@ $this->group(['namespace' => 'Api', 'middleware' => 'auth:api'], function(){
     Route::apiResources(
         [
             'despesas' => 'DespesaController',
+            'catalogo' => 'CatalogoDespesaController',
         ]
     );
     $this->get('despesa/{id_despesa}/catalogo-despesa', 'DespesaController@catalogoDespesas');
