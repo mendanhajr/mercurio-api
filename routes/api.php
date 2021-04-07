@@ -14,23 +14,17 @@
     return $request->user();
 });*/
 
-
-/**
- * ROTAS DE LOGIN E AUTENTICAÇÃO
- */
 Route::post('login', 'Auth\AuthenticateController@authenticate')->name('login');
-$this->post('autenticacao/refresh', 'Auth\AuthenticateController@refreshToken');
-$this->get('autenticacao', 'Auth\AuthenticateController@getAuthenticatedUser');
+Route::post('autenticacao/refresh', 'Auth\AuthenticateController@refreshToken');
+Route::get('autenticacao', 'Auth\AuthenticateController@getAuthenticatedUser');
 
-$this->group(['namespace' => 'Api', 'middleware' => 'auth:api'], function(){
-    /*Route::apiResources(
+Route::group(['namespace' => 'Api', 'middleware' => 'auth:api'], function(){
+    Route::apiResources(
         [
             'despesas' => 'DespesaController',
             'catalogo' => 'CatalogoDespesaController',
         ]
-    );*/
+    );
 
-    Route::get('despesas', 'DespesaController@index')->name('despesas');
-    Route::get('catalogo', 'CatalogoDespesaController@index')->name('catalogo');
-    $this->get('despesa/{id_despesa}/catalogo-despesa', 'DespesaController@catalogoDespesas');
+    //Route::get('despesa/{id_despesa}/catalogo-despesa', 'DespesaController@catalogoDespesas');
 });

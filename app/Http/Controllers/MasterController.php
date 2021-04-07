@@ -12,7 +12,7 @@ class MasterController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index()
+    public function index(Request $request)
     {
         $data = $this->model->all();
         return response()->json($data);
