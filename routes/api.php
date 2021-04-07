@@ -18,7 +18,7 @@
 /**
  * ROTAS DE LOGIN E AUTENTICAÇÃO
  */
-Route::post('login', 'Auth\AuthenticateController@authenticate');
+Route::post('login', 'Auth\AuthenticateController@authenticate')->name('login');
 $this->post('autenticacao/refresh', 'Auth\AuthenticateController@refreshToken');
 $this->get('autenticacao', 'Auth\AuthenticateController@getAuthenticatedUser');
 
