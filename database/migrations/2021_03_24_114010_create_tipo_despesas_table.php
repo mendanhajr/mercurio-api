@@ -15,7 +15,7 @@ class CreateTipoDespesasTable extends Migration
     {
         Schema::create('tipo_despesas', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('nome', 100);
+            $table->string('nome', 100);
             $table->timestamps();
         });
     }
