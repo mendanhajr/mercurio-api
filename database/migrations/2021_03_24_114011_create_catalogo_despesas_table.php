@@ -16,7 +16,7 @@ class CreateCatalogoDespesasTable extends Migration
         Schema::create('catalogo_despesas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 100);
-            $table->integer('tipo_despesa_id')->unique();
+            $table->integer('tipo_despesa_id');
             $table->boolean('situacao');
             $table->timestamps();
             $table->foreign('tipo_despesa_id')
