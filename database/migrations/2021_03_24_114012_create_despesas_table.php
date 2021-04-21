@@ -15,7 +15,7 @@ class CreateDespesasTable extends Migration
     {
         Schema::create('despesas', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('valor', 8, 2);
+            $table->decimal('valor');
             $table->integer('catalogo_id');
             $table->enum('status', ['A', 'P']);
             $table->tinyInteger('mes_referencia');
