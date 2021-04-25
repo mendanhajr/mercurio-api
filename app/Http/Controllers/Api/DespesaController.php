@@ -19,7 +19,8 @@ class DespesaController extends MasterController
     public function index(Request $request)
     {
         $data = $this->model::select('despesas.*', 'cd.nome as nome_catalogo')
-        ->join('catalogo_despesas as cd', 'cd.id', '=', 'despesas.catalogo_id');
+        ->join('catalogo_despesas as cd', 'cd.id', '=', 'despesas.catalogo_id')
+        ->get();
 
         return response()->json($data);
     }
