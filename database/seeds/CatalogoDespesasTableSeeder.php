@@ -117,7 +117,7 @@ class CatalogoDespesasTableSeeder extends Seeder
 
         DB::table('catalogo_despesas')->insert([
             'nome' => 'Entretenimento',
-            'tipo_despesa_id' => 1,
+            'tipo_despesa_id' => 2,
             'situacao' => true,
             'created_at' => now(),
             'updated_at' => now()
