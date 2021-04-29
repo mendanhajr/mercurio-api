@@ -21,7 +21,6 @@ class ItemCatalogo extends Model
      */
     protected $fillable = [
         'nome',
-        'descricao',
         'id_catalogo',
         'gerar_automatico',
     ];

@@ -16,7 +16,6 @@ class CreateItemCatalogoTable extends Migration
         Schema::create('item_catalogo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 100);
-            $table->string('descricao', 100);
             $table->integer('id_catalogo');
             $table->boolean('gerar_automatico')->default(false);
             $table->timestamps();
