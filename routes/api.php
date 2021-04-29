@@ -23,6 +23,7 @@ Route::group(['namespace' => 'Api', 'middleware' => 'auth:api'], function(){
         [
             'despesas' => 'DespesaController',
             'catalogo' => 'CatalogoDespesaController',
+            'item-catalogo' => 'ItemCatalogoController',
             'tipo-despesa' => 'TipoDespesaController',
         ]
     );
