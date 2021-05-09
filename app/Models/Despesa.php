@@ -13,7 +13,7 @@ class Despesa extends Model
      */
     protected $fillable = [
         'valor',
-        'catalogo_id',
+        'item_catalogo_id',
         'status',
         'mes_referencia',
         'ano_referencia',
@@ -22,7 +22,7 @@ class Despesa extends Model
     public function rules(){
         return [
             'valor' => 'required',
-            'catalogo_id' => 'required',
+            'item_catalogo_id' => 'required',
             'status' => 'required',
             'mes_referencia' => 'required',
             'ano_referencia' => 'required',
