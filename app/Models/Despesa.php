@@ -29,7 +29,7 @@ class Despesa extends Model
         ];
     }
 
-    public function catalogoDespesas(){
-        return $this->belongsTo(CatalogoDespesa::class, 'catalogo_id');
+    public function itemCatalogoDespesas(){
+        return $this->belongsTo(ItemCatalogo::class, 'item_catalogo_id');
     }
 }
