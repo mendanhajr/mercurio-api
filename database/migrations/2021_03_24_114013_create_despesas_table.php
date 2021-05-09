@@ -16,14 +16,14 @@ class CreateDespesasTable extends Migration
         Schema::create('despesas', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('valor');
-            $table->integer('catalogo_id');
+            $table->integer('item_catalogo_id');
             $table->enum('status', ['A', 'P']);
             $table->tinyInteger('mes_referencia');
             $table->tinyInteger('ano_referencia');
             $table->timestamps();
-            $table->foreign('catalogo_id')
+            $table->foreign('item_catalogo_id')
                 ->references('id')
-                ->on('catalogo_despesas')
+                ->on('item_catalogo')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
