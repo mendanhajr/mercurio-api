@@ -32,4 +32,13 @@ class Despesa extends Model
     public function itemCatalogoDespesas(){
         return $this->belongsTo(ItemCatalogo::class, 'item_catalogo_id');
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | ACCESSORS
+    |--------------------------------------------------------------------------
+    */
+    public function getValorAttribute($value){
+        return number_format($value, 2, ',', '.');
+    }
 }
