@@ -18,10 +18,19 @@ class DespesaController extends MasterController
 
     public function index(Request $request)
     {
-        $data = $this->model::select('despesas.*', 'cd.nome as nome_catalogo', 'ic.nome')
+        $data = $this->model::query();
+
+        $data->select('despesas.*', 'cd.nome as nome_catalogo', 'ic.nome')
         ->join('item_catalogo as ic', 'ic.id', '=', 'despesas.item_catalogo_id')
-        ->join('catalogo_despesas as cd', 'cd.id', '=', 'ic.id_catalogo')
-        ->get();
+        ->join('catalogo_despesas as cd', 'cd.id', '=', 'ic.id_catalogo');
+
+        if(isset($request->ano_referencia) && !empty($request->ano_referencia)){
+            $data = $data->where('despesas.ano_referencia', '=', (int) $request->ano_referencia);
+        }
+        if(isset($request->mes_referencia) && !empty($request->mes_referencia)){
+            $data = $data->where('despesas.mes_referencia', '=', (int) $request->mes_referencia);
+        }
+        $data = $data->get();
 
         return response()->json($data);
     }
