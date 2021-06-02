@@ -30,7 +30,7 @@ class DespesaController extends MasterController
         if(isset($request->mes_referencia) && !empty($request->mes_referencia)){
             $data = $data->where('despesas.mes_referencia', '=', (int) $request->mes_referencia);
         }
-        $data = $data->get();
+        $data = $data->orderBy('despesas.id', 'desc')->get();
 
         return response()->json($data);
     }
