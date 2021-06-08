@@ -36,6 +36,10 @@ class DespesaController extends MasterController
         if(isset($request->mes_referencia) && !empty($request->mes_referencia)){
             $data = $data->where('despesas.mes_referencia', '=', (int) $request->mes_referencia);
         }
+        if(isset($request->idCatalogo) && !is_null($request->idCatalogo)){
+            $arrIdCatalogo = $this->retornaArrayFormatado($request->idCatalogo);
+            $data = $data->whereIn('cd.id', $arrIdCatalogo);
+        }
         $data = $data->groupBy('despesas.id', 'cd.nome', 'ic.nome')->orderBy('despesas.id', 'desc')->get();
 
         return response()->json(
@@ -49,5 +53,13 @@ class DespesaController extends MasterController
     public function catalogoDespesas(){
         $data = $this->model->all();
         return response()->json($data);
+    }
+
+    public function retornaArrayFormatado($idCatalogo){
+        $urlDecodeArray = urldecode($idCatalogo);
+        $strReplace = str_replace(array( '[', ']' ), '', $urlDecodeArray);
+        $arrIdCatalogo = explode(',', $strReplace);
+
+        return $arrIdCatalogo;
     }
 }
